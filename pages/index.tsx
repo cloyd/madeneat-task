@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 
+import { sampleUserData } from "../utils/sample-data";
+
 import { User } from "../interfaces";
 
 import Layout from "../components/Layout";
@@ -29,10 +31,16 @@ const HomePage: NextPage<Props> = ({ users: data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/users`);
-  const { users } = await response.json();
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/users`);
+  // const { users } = await response.json();
 
-  return { props: { users } };
+  // return { props: { users } };
+
+  return {
+    props: {
+      users: sampleUserData,
+    },
+  };
 };
 
 export default HomePage;
