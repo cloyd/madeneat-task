@@ -3,6 +3,11 @@ import { GetStaticProps, NextPage } from "next";
 
 import { User } from "../interfaces";
 
+import Layout from "../components/Layout";
+import Table from "../components/Table";
+import Search from "../components/Search";
+import Pagination from "../components/Pagination";
+
 type Props = {
   users: User[];
 };
@@ -13,11 +18,13 @@ const HomePage: NextPage<Props> = ({ users: data }) => {
   console.log("users", users);
 
   return (
-    <div className="layout">
-      <div className="search"></div>
-      <div className="table"></div>
-      <div className="pagination"></div>
-    </div>
+    <Layout title="Users List | Madeneat Task">
+      <Search
+        onChange={(searchValue) => console.log("search text", searchValue)}
+      />
+      <Table />
+      <Pagination />
+    </Layout>
   );
 };
 
