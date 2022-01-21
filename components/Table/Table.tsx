@@ -8,7 +8,7 @@ import { StyledTable, HeaderContainer } from "./Table.styled";
 
 type Props<DataItem extends Record<string, unknown>> = {
   data: DataItem[];
-  columns: string[];
+  columns: string[]; // TODO: create columns type/interface
   isLoading?: boolean;
 };
 
@@ -40,10 +40,10 @@ export const Table = <DataItem extends Record<string, unknown>>({
             <th onClick={column.onClick}>
               <HeaderContainer>
                 {column.label}
-                {/* <Sort
-                  isSorted={column.isSorted}
-                  isSortedDesc={column.isSortedDesc}
-                /> */}
+                <Sort
+                  isSorted={column.sortEnabled}
+                  sortOrder={column.sortOrder}
+                />
               </HeaderContainer>
             </th>
           ))}
