@@ -1,6 +1,6 @@
 import { useMemo, ReactElement } from "react";
 
-import Sort from "../Sort";
+import Sort from "./Sort";
 
 import useTable from "./useTable";
 
