@@ -15,6 +15,12 @@ export const StyledTable = styled.table`
     color: #707274;
     padding: 20px;
     min-width: 44px;
+
+    &.sort-button {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   tbody {

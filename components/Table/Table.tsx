@@ -38,7 +38,7 @@ export const Table = <DataItem extends Record<string, unknown>>({
         <tr>
           {headers.map((column) => (
             // @ts-expect-error
-            <th onClick={column.onClick}>
+            <th {...column.getProps()}>
               <HeaderContainer>
                 {/* @ts-expect-error */}
                 {column.label}
