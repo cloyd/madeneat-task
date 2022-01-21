@@ -12,6 +12,8 @@ type Props = {
   users: User[];
 };
 
+const columns = ["name", "gender", "amount", "registered"];
+
 const HomePage: NextPage<Props> = ({ users: data }) => {
   const [users, setUsers] = useState(data);
 
@@ -22,7 +24,7 @@ const HomePage: NextPage<Props> = ({ users: data }) => {
       <Search
         onChange={(searchValue) => console.log("search text", searchValue)}
       />
-      <Table />
+      <Table data={users} columns={columns} />
       <Pagination />
     </Layout>
   );
