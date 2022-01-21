@@ -1,17 +1,51 @@
-import { FC } from "react";
+import { FC, useMemo, ReactElement } from "react";
 
-import { StyledTable } from "./Table.styled";
+import Sort from "../Sort";
 
-export const Table: FC = () => {
-  const headers = ["name", "gender", "amount", "registered"];
-  const rows = [];
+import useTable from "./useTable";
+
+import { StyledTable, HeaderContainer } from "./Table.styled";
+
+type Props<DataItem extends Record<string, unknown>> = {
+  data: DataItem[];
+  columns: string[];
+  isLoading?: boolean;
+};
+
+export const Table = <DataItem extends Record<string, unknown>>({
+  data: dataProps = [],
+  isLoading = false,
+  columns: columnProps,
+}: Props<DataItem>): ReactElement | null => {
+  const columns = useMemo(() => [...columnProps], [columnProps]);
+  const data = useMemo(() => [...dataProps], [dataProps]);
+
+  const { headers, rows } = useTable({
+    columns,
+    data,
+    sort: {
+      enabled: true,
+    },
+  });
+
+  if (isLoading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <StyledTable>
       <thead>
         <tr>
           {headers.map((column) => (
-            <th>{column}</th>
+            <th onClick={column.onClick}>
+              <HeaderContainer>
+                {column.label}
+                {/* <Sort
+                  isSorted={column.isSorted}
+                  isSortedDesc={column.isSortedDesc}
+                /> */}
+              </HeaderContainer>
+            </th>
           ))}
         </tr>
       </thead>
