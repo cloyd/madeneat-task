@@ -41,6 +41,7 @@ const useSort = (tableData, isEnabled = false) => {
     changeSort,
     sortedData,
     sortOrder,
+    sortKey,
   };
 };
 

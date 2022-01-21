@@ -54,7 +54,7 @@ export const useTable: UseTable = ({
           ...header,
           onClick: () => sortOptions.changeSort(header.id),
           sortOrder: sortOptions.sortOrder,
-          sortEnabled: true,
+          sorted: sortOptions.sortKey === header.id,
         };
       }),
       rows: sortedData.map((item, idx) => {

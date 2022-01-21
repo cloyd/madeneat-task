@@ -40,10 +40,7 @@ export const Table = <DataItem extends Record<string, unknown>>({
             <th onClick={column.onClick}>
               <HeaderContainer>
                 {column.label}
-                <Sort
-                  isSorted={column.sortEnabled}
-                  sortOrder={column.sortOrder}
-                />
+                <Sort isSorted={column.sorted} sortOrder={column.sortOrder} />
               </HeaderContainer>
             </th>
           ))}
