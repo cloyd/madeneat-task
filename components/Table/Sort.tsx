@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { SortOrder } from "./Table/useSort";
+import { SortOrder } from "./useSort";
 
 type SortProps = {
   isSorted: boolean;
