@@ -17,13 +17,20 @@ const columns = ["name", "gender", "amount", "registered"];
 const HomePage: NextPage<Props> = ({ users: data }) => {
   const [users, setUsers] = useState(data);
 
-  console.log("users", users);
+  const handleSearch = (searchValue) => {
+    if (searchValue !== "") {
+      const results = users.filter((user) =>
+        user.name.toLowerCase().startsWith(searchValue.toLowerCase())
+      );
+      setUsers(results);
+    } else {
+      setUsers(data);
+    }
+  };
 
   return (
     <Layout title="Users List | Madeneat Task">
-      <Search
-        onChange={(searchValue) => console.log("search text", searchValue)}
-      />
+      <Search onChange={handleSearch} />
       <Table data={users} columns={columns} />
       <Pagination />
     </Layout>
