@@ -1,4 +1,4 @@
-import { FC, useMemo, ReactElement } from "react";
+import { useMemo, ReactElement } from "react";
 
 import Sort from "../Sort";
 
@@ -37,9 +37,12 @@ export const Table = <DataItem extends Record<string, unknown>>({
       <thead>
         <tr>
           {headers.map((column) => (
+            // @ts-expect-error
             <th onClick={column.onClick}>
               <HeaderContainer>
+                {/* @ts-expect-error */}
                 {column.label}
+                {/* @ts-expect-error */}
                 <Sort isSorted={column.sorted} sortOrder={column.sortOrder} />
               </HeaderContainer>
             </th>
@@ -51,6 +54,7 @@ export const Table = <DataItem extends Record<string, unknown>>({
           return (
             <tr key={row.key}>
               {row.cells.map((cell) => (
+                // @ts-expect-error
                 <td key={cell.key}>{cell.value}</td>
               ))}
             </tr>

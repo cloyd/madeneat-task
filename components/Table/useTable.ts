@@ -29,6 +29,7 @@ type Props = {
 
 type UseTable = (props: Props) => UseTableReturn;
 
+// @ts-expect-error
 export const useTable: UseTable = ({
   columns = [],
   data = [],
@@ -76,6 +77,7 @@ export const useTable: UseTable = ({
       original: item,
       cells: headers.map((key) => ({
         key: `cell-${key}`,
+        // @ts-expect-error
         value: item[key],
       })),
     };
