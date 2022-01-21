@@ -8,9 +8,7 @@ type SortProps = {
 };
 
 const Sort: FC<SortProps> = ({ isSorted, sortOrder }) => (
-  <span>
-    {isSorted ? (sortOrder === "desc" ? "  &#9660;" : " &#9650") : ""}
-  </span>
+  <span>{isSorted ? (sortOrder === "desc" ? " ▼" : " ▲") : ""}</span>
 );
 
 export default Sort;
