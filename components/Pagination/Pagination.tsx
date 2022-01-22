@@ -4,7 +4,7 @@ import NavButton from "./NavButton";
 
 import { ITEMS_PER_PAGE, LIMIT } from "./constants";
 
-import { PageNumbers } from "./Pagination.styled";
+import { Container, PageNumbers } from "./Pagination.styled";
 
 type Props = {
   data: Record<string, unknown>[];
@@ -24,6 +24,9 @@ export const Pagination: FC<Props> = ({
   for (let i = 1; i <= Math.ceil(data.length / ITEMS_PER_PAGE); i++) {
     pages.push(i);
   }
+
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
 
   const handlePageChange = (event): void =>
     setCurrentPage(Number(event.target.id));
@@ -47,10 +50,15 @@ export const Pagination: FC<Props> = ({
   };
 
   return (
-    <div>
+    <Container>
+      <div>
+        Showing {indexOfFirstItem + 1} to {indexOfLastItem} of {data.length}{" "}
+        results
+      </div>
+
       <PageNumbers>
         <NavButton
-          label="Prev"
+          label="ᐊ"
           onClick={handlePrevPage}
           disabled={currentPage == pages[0]}
         />
@@ -76,12 +84,12 @@ export const Pagination: FC<Props> = ({
         {minPageNumberLimit >= 1 && <li onClick={handleNextPage}> … </li>}
 
         <NavButton
-          label="Next"
+          label="ᐅ"
           onClick={handleNextPage}
           disabled={currentPage == pages[pages.length - 1]}
         />
       </PageNumbers>
-    </div>
+    </Container>
   );
 };
 
