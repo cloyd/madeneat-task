@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 
 type NavButtonProps = {
   label: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled: boolean;
 };
 
