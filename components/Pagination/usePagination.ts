@@ -7,12 +7,12 @@ export const usePagination = (data = []) => {
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const filteredData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   return {
     currentPage,
     setCurrentPage,
-    currentItems,
+    filteredData,
   };
 };
 
