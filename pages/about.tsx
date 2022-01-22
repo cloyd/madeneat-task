@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 const AboutPage = () => (
   <Layout title="About | Madeneat Task">
     <h1>About the task</h1>
-    <h2>Task: </h2>
+    <h2>Description: </h2>
     <p>
       You are required to create a table component from scratch with the
       following functionalities:
