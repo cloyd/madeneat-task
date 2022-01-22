@@ -50,12 +50,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/users`);
   const { users } = await response.json();
 
-  const formatedUsers = users.map((user) => {
-    return {
-      ...user,
-      registered: formatDate(user.registered),
-    };
-  });
+  const formatedUsers = users.map((user: User) => ({
+    ...user,
+    registered: formatDate(user.registered),
+  }));
 
   return { props: { users: formatedUsers } };
 };

@@ -1,8 +1,9 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 
 import { User } from "../../interfaces";
-import { sampleUserData } from "../../utils/sample-data";
+import { formatDate } from "../../utils/dateFormat";
+
 import Layout from "../../components/Layout";
 import List from "../../components/List";
 
@@ -10,7 +11,7 @@ type Props = {
   users: User[];
 };
 
-const WithStaticProps = ({ users }: Props) => (
+const UsersPage: NextPage<Props> = ({ users }) => (
   <Layout title="Users List | Madeneat Task">
     <h1>Users List</h1>
     <p>
@@ -27,8 +28,15 @@ const WithStaticProps = ({ users }: Props) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const users: User[] = sampleUserData;
-  return { props: { users } };
+  const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/users`);
+  const { users } = await response.json();
+
+  const formatedUsers = users.map((user: User) => ({
+    ...user,
+    registered: formatDate(user.registered),
+  }));
+
+  return { props: { users: formatedUsers } };
 };
 
-export default WithStaticProps;
+export default UsersPage;

@@ -1,13 +1,15 @@
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import styled from "@emotion/styled";
 
 import { User } from "../../interfaces";
 import { sampleUserData } from "../../utils/sample-data";
+import { formatDate } from "../../utils/dateFormat";
+
 import Layout from "../../components/Layout";
 import ListDetail from "../../components/ListDetail";
 
 type Props = {
-  item?: User;
+  user?: User;
   errors?: string;
 };
 
@@ -15,7 +17,8 @@ const ErrorMessage = styled.span`
   color: red;
 `;
 
-const StaticPropsDetail = ({ item, errors }: Props) => {
+const UserDetailPage: NextPage<Props> = ({ user, errors }) => {
+  console.log("user", user);
   if (errors) {
     return (
       <Layout title="Error | Madeneat Task">
@@ -27,13 +30,13 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout title={`${item ? item.name : "User Detail"} | Madeneat Task`}>
-      {item && <ListDetail item={item} />}
+    <Layout title={`${user ? user.name : "User Detail"} | Madeneat Task`}>
+      {user && <ListDetail item={user} />}
     </Layout>
   );
 };
 
-export default StaticPropsDetail;
+export default UserDetailPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = sampleUserData.map((user) => ({
@@ -46,8 +49,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id;
-    const item = sampleUserData.find((data) => data.id === Number(id));
-    return { props: { item } };
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/api/users/${id}`
+    );
+    const { user } = await response.json();
+
+    const formattedUser = {
+      ...user,
+      registered: formatDate(user.registered),
+    };
+
+    return { props: { user: formattedUser } };
   } catch (err) {
     return { props: { errors: err.message } };
   }
