@@ -28,6 +28,8 @@ const HomePage: NextPage<Props> = ({ users: data }) => {
     } else {
       setUsers(data);
     }
+
+    setCurrentPage(1);
   };
 
   return (
