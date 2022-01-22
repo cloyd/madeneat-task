@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 
 import NavButton from "./NavButton";
 
@@ -31,23 +31,23 @@ export const Pagination: FC<Props> = ({
   const handlePageChange = (event): void =>
     setCurrentPage(Number(event.target.id));
 
-  const handleNextPage = () => {
+  const handleNextPage = useCallback(() => {
     setCurrentPage(currentPage + 1);
 
     if (currentPage + 1 > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + LIMIT);
       setMinPageNumberLimit(minPageNumberLimit + LIMIT);
     }
-  };
+  }, [currentPage, maxPageNumberLimit, minPageNumberLimit]);
 
-  const handlePrevPage = () => {
+  const handlePrevPage = useCallback(() => {
     setCurrentPage(currentPage - 1);
 
     if ((currentPage - 1) % LIMIT == 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - LIMIT);
       setMinPageNumberLimit(minPageNumberLimit - LIMIT);
     }
-  };
+  }, [currentPage, maxPageNumberLimit, minPageNumberLimit]);
 
   return (
     <Container>
