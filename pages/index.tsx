@@ -17,7 +17,7 @@ const columns = ["name", "gender", "amount", "registered"];
 const HomePage: NextPage<Props> = ({ users: data }) => {
   const [users, setUsers] = useState(data);
 
-  const handleSearch = (searchValue) => {
+  const handleSearch = (searchValue: string): void => {
     if (searchValue !== "") {
       const results = users.filter((user) =>
         user.name.toLowerCase().startsWith(searchValue.toLowerCase())
