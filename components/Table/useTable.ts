@@ -62,6 +62,7 @@ export const useTable: UseTable = ({
           sortOrder: sortOptions.sortOrder,
           sorted: sortOptions.sortKey === header.id,
           getProps: () => ({
+            key: `header-${header.id}`,
             onClick: () => sortOptions.changeSort(header.id),
             className: "sort-button",
           }),
