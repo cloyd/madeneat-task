@@ -18,7 +18,6 @@ const ErrorMessage = styled.span`
 `;
 
 const UserDetailPage: NextPage<Props> = ({ user, errors }) => {
-  console.log("user", user);
   if (errors) {
     return (
       <Layout title="Error | Madeneat Task">
