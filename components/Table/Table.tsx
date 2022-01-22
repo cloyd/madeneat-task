@@ -54,7 +54,6 @@ export const Table = <DataItem extends Record<string, unknown>>({
           return (
             <tr key={row.key}>
               {row.cells.map((cell) => (
-                // @ts-expect-error
                 <td key={cell.key}>{cell.value}</td>
               ))}
             </tr>

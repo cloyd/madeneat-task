@@ -8,6 +8,7 @@ import Table from "../components/Table";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 import usePagination from "../components/Pagination/usePagination";
+import { formatDate } from "../utils/dateFormat";
 
 type Props = {
   users: User[];
@@ -49,7 +50,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/users`);
   const { users } = await response.json();
 
-  return { props: { users } };
+  const formatedUsers = users.map((user) => {
+    return {
+      ...user,
+      registered: formatDate(user.registered),
+    };
+  });
+
+  return { props: { users: formatedUsers } };
 };
 
 export default HomePage;

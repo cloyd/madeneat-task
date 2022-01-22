@@ -1,8 +1,13 @@
 import useSort from "./useSort";
 
+type Cell = {
+  key: string;
+  value: string;
+};
+
 type Row = {
   key: string;
-  cells: [];
+  cells: Cell[];
   original: any;
 };
 
