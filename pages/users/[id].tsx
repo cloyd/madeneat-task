@@ -1,11 +1,11 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import styled from "@emotion/styled";
 
-import { User } from "../../types";
-import { formatDate } from "../../utils/dateFormat";
+import { User } from "@types/index";
+import { formatDate } from "@utils/dateFormat";
 
-import Layout from "../../components/Layout";
-import ListDetail from "../../components/ListDetail";
+import Layout from "@components/Layout";
+import ListDetail from "@components/ListDetail";
 
 type Props = {
   user?: User;

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import dummyData from "../../../utils/dummy-data.json";
+import dummyData from "@utils/dummy-data.json";
 
 const handler = (_req: NextApiRequest, res: NextApiResponse) => {
   try {

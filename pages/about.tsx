@@ -1,7 +1,9 @@
+import { NextPage } from "next";
 import Link from "next/link";
-import Layout from "../components/Layout";
 
-const AboutPage = () => (
+import Layout from "@components/Layout";
+
+const AboutPage: NextPage = () => (
   <Layout title="About | Madeneat Task">
     <h1>About the task</h1>
     <h2>Description: </h2>

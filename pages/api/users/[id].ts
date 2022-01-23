@@ -1,6 +1,6 @@
 import type { NextApiHandler } from "next";
 
-import dummyData from "../../../utils/dummy-data.json";
+import dummyData from "@utils/dummy-data.json";
 
 const user: NextApiHandler = async (req, res) => {
   const { id } = req.query;
