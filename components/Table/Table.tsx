@@ -37,12 +37,9 @@ export const Table = <DataItem extends Record<string, unknown>>({
       <thead>
         <tr>
           {headers.map((column) => (
-            // @ts-expect-error
             <th {...column.getProps()}>
               <HeaderContainer>
-                {/* @ts-expect-error */}
                 {column.label}
-                {/* @ts-expect-error */}
                 <Sort isSorted={column.sorted} sortOrder={column.sortOrder} />
               </HeaderContainer>
             </th>

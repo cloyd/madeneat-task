@@ -1,4 +1,4 @@
-import useSort from "./useSort";
+import useSort, { SortOrder } from "./useSort";
 
 type Cell = {
   key: string;
@@ -13,8 +13,10 @@ type Row = {
 
 type Header = {
   key: string;
-  cells: [];
-  original: any;
+  label: string;
+  getProps: () => void;
+  sorted?: boolean;
+  sortOrder?: SortOrder;
 };
 
 interface UseTableReturn {
