@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 
-import { User } from "../interfaces";
+import { User } from "../types";
 
-import Layout from "../components/Layout";
-import Table from "../components/Table";
-import Search from "../components/Search";
-import Pagination from "../components/Pagination";
-import usePagination from "../components/Pagination/usePagination";
-import { formatDate } from "../utils/dateFormat";
+import Layout from "@components/Layout";
+import Table from "@components/Table";
+import Search from "@components/Search";
+import Pagination from "@components/Pagination";
+import usePagination from "@components/Pagination/usePagination";
+import { formatDate } from "@utils/dateFormat";
 
 type Props = {
   users: User[];

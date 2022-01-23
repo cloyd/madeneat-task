@@ -5,3 +5,5 @@ export type User = {
   amount: number;
   registered: string;
 };
+
+export default {};
