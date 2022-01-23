@@ -1,22 +1,18 @@
 import { FC } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import styled from "@emotion/styled";
+
+import { Container, Nav } from "./Layout.styled";
 
 type Props = {
   title?: string;
 };
 
-const Nav = styled.nav`
-  display: flex;
-  gap: 1em;
-`;
-
 const Layout: FC<Props> = ({
   title = "This is the default title",
   children,
 }) => (
-  <div>
+  <Container>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -39,7 +35,7 @@ const Layout: FC<Props> = ({
       </Nav>
     </header>
     {children}
-  </div>
+  </Container>
 );
 
 export default Layout;
