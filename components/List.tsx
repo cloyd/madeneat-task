@@ -1,4 +1,4 @@
-import { User } from "../types";
+import { User } from "@interfaces/";
 
 import ListItem from "./ListItem";
 

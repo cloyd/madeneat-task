@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import styled from "@emotion/styled";
 
-import { User } from "@types/index";
+import { User } from "@interfaces/index";
 import { formatDate } from "@utils/dateFormat";
 
 import Layout from "@components/Layout";

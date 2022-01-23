@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 
-import { User } from "@types/index";
+import { User } from "@interfaces/index";
 import { formatDate } from "@utils/dateFormat";
 
 import Layout from "@components/Layout";

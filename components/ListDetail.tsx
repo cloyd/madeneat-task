@@ -1,4 +1,4 @@
-import { User } from "../types";
+import { User } from "@interfaces/index";
 
 type ListDetailProps = {
   item: User;
