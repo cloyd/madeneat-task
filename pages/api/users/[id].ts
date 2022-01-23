@@ -1,11 +1,11 @@
 import type { NextApiHandler } from "next";
 
-import { sampleUserData } from "../../../utils/sample-data";
+import dummyData from "../../../utils/dummy-data.json";
 
 const user: NextApiHandler = async (req, res) => {
   const { id } = req.query;
 
-  const user = sampleUserData.find((item) => item.id === Number(id));
+  const user = dummyData.users.find((item) => item.id === Number(id));
 
   if (user) {
     res.status(200).json({

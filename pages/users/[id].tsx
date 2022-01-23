@@ -2,7 +2,6 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import styled from "@emotion/styled";
 
 import { User } from "../../interfaces";
-import { sampleUserData } from "../../utils/sample-data";
 import { formatDate } from "../../utils/dateFormat";
 
 import Layout from "../../components/Layout";
@@ -38,7 +37,10 @@ const UserDetailPage: NextPage<Props> = ({ user, errors }) => {
 export default UserDetailPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = sampleUserData.map((user) => ({
+  const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/users`);
+  const { users } = await response.json();
+
+  const paths = users.map((user) => ({
     params: { id: user.id.toString() },
   }));
 
