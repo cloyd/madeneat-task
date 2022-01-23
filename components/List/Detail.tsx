@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { User } from "@interfaces/index";
 
-type ListDetailProps = {
+type Props = {
   item: User;
 };
 
-const ListDetail = ({ item: user }: ListDetailProps) => (
+const Detail: FC<Props> = ({ item: user }) => (
   <div>
     <h1>Detail for {user.name}</h1>
     <p>ID: {user.id}</p>
@@ -14,4 +15,4 @@ const ListDetail = ({ item: user }: ListDetailProps) => (
   </div>
 );
 
-export default ListDetail;
+export default Detail;

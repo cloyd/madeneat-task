@@ -1,16 +1,18 @@
+import { FC } from "react";
+
 import { User } from "@interfaces/index";
 
-import ListItem from "./ListItem";
+import Item from "./Item";
 
 type Props = {
   items: User[];
 };
 
-const List = ({ items }: Props) => (
+const List: FC<Props> = ({ items }) => (
   <ul>
     {items.map((item) => (
       <li key={item.id}>
-        <ListItem data={item} />
+        <Item data={item} />
       </li>
     ))}
   </ul>

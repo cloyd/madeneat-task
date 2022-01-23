@@ -5,7 +5,7 @@ import { User } from "@interfaces/index";
 import { formatDate } from "@utils/dateFormat";
 
 import Layout from "@components/Layout";
-import ListDetail from "@components/ListDetail";
+import ListDetail from "@components/List/Detail";
 
 type Props = {
   user?: User;

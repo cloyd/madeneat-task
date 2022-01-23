@@ -1,3 +1,4 @@
+import { FC } from "react";
 import Link from "next/link";
 
 import { User } from "@interfaces/index";
@@ -6,7 +7,7 @@ type Props = {
   data: User;
 };
 
-const ListItem = ({ data }: Props) => (
+const Item: FC<Props> = ({ data }) => (
   <Link href="/users/[id]" as={`/users/${data.id}`}>
     <a>
       {data.id}: {data.name}
@@ -14,4 +15,4 @@ const ListItem = ({ data }: Props) => (
   </Link>
 );
 
-export default ListItem;
+export default Item;
