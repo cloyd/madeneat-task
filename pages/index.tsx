@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 
-import { User } from "@types/index";
+import { User } from "@interfaces/index";
 
 import Layout from "@components/Layout";
 import Table from "@components/Table";
